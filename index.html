@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Nhà Quay Phim | Nguyễn Thế Nguyên</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 1)), url('https://i.postimg.cc/4yT7xNf5/istockphoto-1480245214-612x612.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .nav-scrolled {
+            background-color: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 60%);
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        
+        .project-card .project-info {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .project-card:hover .project-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: #f59e0b; /* amber-500 */
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-wider text-white">
+                NGUYỄN THẾ NGUYÊN
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-gray-300 hover:text-amber-400 transition-colors">Trang chủ</a>
+                <a href="#about" class="text-gray-300 hover:text-amber-400 transition-colors">Giới thiệu</a>
+                <a href="#projects" class="text-gray-300 hover:text-amber-400 transition-colors">Dự án</a>
+                <a href="#contact" class="text-gray-300 hover:text-amber-400 transition-colors">Liên hệ</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
+            <a href="#home" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400">Trang chủ</a>
+            <a href="#about" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400">Giới thiệu</a>
+            <a href="#projects" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400">Dự án</a>
+            <a href="#contact" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400">Liên hệ</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="h-screen w-full flex items-center justify-center hero-bg">
+        <div class="text-center text-white px-4">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-widest leading-tight">
+                Nguyễn Thế Nguyên
+            </h1>
+            <p class="mt-4 text-lg md:text-2xl text-gray-300 font-light">
+                Nhà Quay Phim Điện Ảnh & Người Kể Chuyện Bằng Hình Ảnh
+            </p>
+            <a href="#projects" class="mt-8 inline-block bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:bg-amber-400 transition-transform transform hover:scale-105">
+                Xem Showreel
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+                <div class="lg:col-span-2">
+                    <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-2xl">
+                         <img src="https://i.postimg.cc/FK068DBB/394faacf-653c-4e60-81b3-8272daa958d6.jpg" alt="Chân dung của Nguyễn Thế Nguyên" class="object-cover w-full h-full">
+                    </div>
+                </div>
+                <div class="lg:col-span-3">
+                    <h2 class="section-title text-3xl md:text-4xl font-bold mb-8">Về Tôi</h2>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Xin chào, tôi là Nguyễn Thế Nguyên, một nhà quay phim với niềm đam mê mãnh liệt trong việc kiến tạo những câu chuyện đầy cảm xúc qua lăng kính điện ảnh. Đối với tôi, mỗi khung hình không chỉ là một hình ảnh, mà là một thế giới, một tâm trạng, một nhịp đập của cuộc sống.
+                    </p>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Với kinh nghiệm làm việc trên nhiều dự án đa dạng từ phim ngắn, video ca nhạc (MV) đến quảng cáo thương mại (TVC), tôi luôn tìm cách kết hợp kỹ thuật ánh sáng, bố cục và chuyển động máy quay để tạo ra những thước phim không chỉ đẹp về mặt thẩm mỹ mà còn có chiều sâu và ý nghĩa.
+                    </p>
+                    <a href="#contact" class="bg-transparent border-2 border-amber-500 text-amber-500 font-bold py-2 px-6 rounded-lg hover:bg-amber-500 hover:text-gray-900 transition-all duration-300">
+                        Cùng Hợp Tác
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 md:py-32 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold">Các Dự Án Nổi Bật</h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Nơi mỗi thước phim là một câu chuyện độc đáo được kể bằng ánh sáng và cảm xúc.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://placehold.co/800x600/1f2937/e5e5e5?text=Dự+án+1" alt="Dự án 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
+                        <h3 class="text-xl font-bold">Hoàng Hôn Trên Biển</h3>
+                        <p class="text-sm text-amber-400">Phim Ngắn</p>
+                    </div>
+                </a>
+                <!-- Project Card 2 -->
+                <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://placehold.co/800x600/374151/e5e5e5?text=Dự+án+2" alt="Dự án 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
+                        <h3 class="text-xl font-bold">Nhịp Điệu Thành Phố</h3>
+                        <p class="text-sm text-amber-400">Video Âm Nhạc (MV)</p>
+                    </div>
+                </a>
+                <!-- Project Card 3 -->
+                <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://placehold.co/800x600/4b5563/e5e5e5?text=Dự+án+3" alt="Dự án 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
+                        <h3 class="text-xl font-bold">Khoảnh Khắc Vàng</h3>
+                        <p class="text-sm text-amber-400">Quảng Cáo (TVC)</p>
+                    </div>
+                </a>
+                <!-- Add more project cards as needed -->
+                <!-- These will be hidden initially -->
+                <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg extra-project hidden">
+                    <img src="https://placehold.co/800x600/52525b/e5e5e5?text=Dự+án+4" alt="Dự án 4" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
+                        <h3 class="text-xl font-bold">Chân Trời Mới</h3>
+                        <p class="text-sm text-amber-400">Phim Tài Liệu</p>
+                    </div>
+                </a>
+                <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg extra-project hidden">
+                    <img src="https://placehold.co/800x600/1e40af/e5e5e5?text=Dự+án+5" alt="Dự án 5" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
+                        <h3 class="text-xl font-bold">Giấc Mơ Xanh</h3>
+                        <p class="text-sm text-amber-400">Phim Ngắn</p>
+                    </div>
+                </a>
+                <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg extra-project hidden">
+                    <img src="https://placehold.co/800x600/b91c1c/e5e5e5?text=Dự+án+6" alt="Dự án 6" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
+                        <h3 class="text-xl font-bold">Năng Lượng Bùng Nổ</h3>
+                        <p class="text-sm text-amber-400">Quảng Cáo (TVC)</p>
+                    </div>
+                </a>
+            </div>
+            <div class="text-center mt-12">
+                <button id="see-more-btn" class="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:bg-amber-400 transition-transform transform hover:scale-105">
+                    Xem Thêm
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+             <h2 class="section-title text-3xl md:text-4xl font-bold">Liên Hệ</h2>
+             <p class="text-gray-400 mt-4 max-w-2xl mx-auto mb-10">
+                Bạn có một ý tưởng, một dự án, hay chỉ đơn giản là muốn trò chuyện về điện ảnh? <br/>Đừng ngần ngại liên lạc với tôi.
+             </p>
+             <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
+                <div class="text-lg">
+                    <span class="font-bold text-amber-400">Email:</span>
+                    <a href="mailto:nguyenthenguyen496@gmail.com" id="email-link" class="ml-2 text-gray-300 hover:text-white">nguyenthenguyen496@gmail.com</a>
+                </div>
+                 <div class="text-lg">
+                    <span class="font-bold text-amber-400">Số điện thoại:</span>
+                    <a href="tel:0944659662" class="ml-2 text-gray-300 hover:text-white">(+84) 944 659 662</a>
+                </div>
+             </div>
+             <div class="flex justify-center space-x-6 mt-12">
+                <!-- Social Icons -->
+                <a href="#" class="text-gray-400 hover:text-amber-400 transition-transform transform hover:scale-110">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.73 17.91c-1.35.32-2.39.42-4.24.42-3.1 0-5.4-1.2-5.4-4.22 0-2.31 1.57-4.13 4.2-4.13 2.1 0 3.32.93 4.14 2.23l-1.4.82c-.52-.8-1.25-1.2-2.7-1.2-1.7 0-2.75 1.15-2.75 2.87 0 1.57.9 2.97 3.2 2.97.9 0 1.8-.1 2.65-.32l.3.95zM22 6.5h-3.4l-1.2 4.1h-.1l-1.2-4.1H13V18h1.8V8.9h.1l1.3 4.5h1.5l1.3-4.5h.1V18H22V6.5z"/></svg>
+                    <span class="sr-only">Vimeo</span>
+                </a>
+                <a href="https://www.instagram.com/thnguyen496_/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-amber-400 transition-transform transform hover:scale-110">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 4.155 0 2.748-.012 3.088-.06 4.155-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-4.155.06-2.748 0-3.088-.012-4.155-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 15.315 2 14.974 2 12.227c0-2.748.012-3.088.06-4.155.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.93 2.013 9.27 2 12 2h.315zM12 4.545c-2.417 0-4.364 1.947-4.364 4.364 0 2.417 1.947 4.364 4.364 4.364 2.417 0 4.364-1.947 4.364-4.364 0-2.417-1.947-4.364-4.364-4.364zm0 7.09c-1.541 0-2.791-1.25-2.791-2.791s1.25-2.791 2.791-2.791 2.791 1.25 2.791 2.791-1.25 2.791-2.791 2.791zm5.25-6.405c-.78 0-1.414.634-1.414 1.414s.634 1.414 1.414 1.414 1.414-.634 1.414-1.414-.634-1.414-1.414-1.414z" clip-rule="evenodd" /></svg>
+                    <span class="sr-only">Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/the.nguyen.187896" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-amber-400 transition-transform transform hover:scale-110">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    <span class="sr-only">Facebook</span>
+                </a>
+             </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto px-6 flex flex-col sm:flex-row justify-between items-center text-gray-500 text-sm">
+            <p>&copy; <span id="year"></span> Nguyễn Thế Nguyên. All Rights Reserved.</p>
+            <p class="mt-2 sm:mt-0">Design by The Nguyen</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('#mobile-menu a, #navbar nav a');
+            const seeMoreBtn = document.getElementById('see-more-btn');
+            const extraProjects = document.querySelectorAll('.extra-project');
+
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Sticky navbar on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('nav-scrolled');
+                } else {
+                    navbar.classList.remove('nav-scrolled');
+                }
+            });
+
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Handle "See More" button for projects
+            if (seeMoreBtn && extraProjects.length > 0) {
+                seeMoreBtn.addEventListener('click', () => {
+                    extraProjects.forEach(project => {
+                        project.classList.toggle('hidden');
+                    });
+
+                    if (seeMoreBtn.textContent.trim() === 'Xem Thêm') {
+                        seeMoreBtn.textContent = 'Thu Gọn';
+                    } else {
+                        seeMoreBtn.textContent = 'Xem Thêm';
+                    }
+                });
+            }
+
+            // Dynamic email link based on device
+            const emailLink = document.getElementById('email-link');
+            if (emailLink) {
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const emailAddress = 'nguyenthenguyen496@gmail.com';
+
+                if (!isMobile) {
+                    // On desktop, link to Gmail's web composer in a new tab
+                    emailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`;
+                    emailLink.target = '_blank';
+                    emailLink.rel = 'noopener noreferrer';
+                }
+                // On mobile, the default `mailto:` link is kept, which is the best practice.
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
