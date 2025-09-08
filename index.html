@@ -69,6 +69,17 @@
             height: 3px;
             background-color: #f59e0b; /* amber-500 */
         }
+        
+        /* Scroll Animation Styles */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -81,10 +92,11 @@
                 NGUYỄN THẾ NGUYÊN
             </a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="text-gray-300 hover:text-amber-400 transition-colors">Trang chủ</a>
-                <a href="#about" class="text-gray-300 hover:text-amber-400 transition-colors">Giới thiệu</a>
-                <a href="#projects" class="text-gray-300 hover:text-amber-400 transition-colors">Dự án</a>
-                <a href="#contact" class="text-gray-300 hover:text-amber-400 transition-colors">Liên hệ</a>
+                <a href="#home" class="text-gray-300 hover:text-amber-400 transition-colors" data-lang="navHome">Trang chủ</a>
+                <a href="#about" class="text-gray-300 hover:text-amber-400 transition-colors" data-lang="navAbout">Giới thiệu</a>
+                <a href="#projects" class="text-gray-300 hover:text-amber-400 transition-colors" data-lang="navProjects">Dự án</a>
+                <a href="#contact" class="text-gray-300 hover:text-amber-400 transition-colors" data-lang="navContact">Liên hệ</a>
+                <button id="lang-switcher" class="border border-amber-500 text-amber-500 text-sm font-bold px-3 py-1 rounded-md hover:bg-amber-500 hover:text-gray-900 transition-colors">EN</button>
             </nav>
             <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -92,23 +104,26 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
-            <a href="#home" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400">Trang chủ</a>
-            <a href="#about" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400">Giới thiệu</a>
-            <a href="#projects" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400">Dự án</a>
-            <a href="#contact" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400">Liên hệ</a>
+            <a href="#home" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400" data-lang="navHomeMobile">Trang chủ</a>
+            <a href="#about" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400" data-lang="navAboutMobile">Giới thiệu</a>
+            <a href="#projects" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400" data-lang="navProjectsMobile">Dự án</a>
+            <a href="#contact" class="block text-center py-3 px-4 text-gray-300 hover:bg-gray-800 hover:text-amber-400" data-lang="navContactMobile">Liên hệ</a>
+            <div class="py-2 px-4">
+                 <button id="lang-switcher-mobile" class="w-full bg-amber-500 text-gray-900 font-bold py-2 rounded-md">Chuyển sang Tiếng Anh</button>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="h-screen w-full flex items-center justify-center hero-bg">
-        <div class="text-center text-white px-4">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-widest leading-tight">
+        <div class="text-center text-white px-4 animate-on-scroll">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-widest leading-tight" data-lang="heroTitle">
                 Nguyễn Thế Nguyên
             </h1>
-            <p class="mt-4 text-lg md:text-2xl text-gray-300 font-light">
+            <p class="mt-4 text-lg md:text-2xl text-gray-300 font-light" data-lang="heroSubtitle">
                 Nhà Quay Phim Điện Ảnh & Người Kể Chuyện Bằng Hình Ảnh
             </p>
-            <a href="#projects" class="mt-8 inline-block bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:bg-amber-400 transition-transform transform hover:scale-105">
+            <a href="#projects" class="mt-8 inline-block bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:bg-amber-400 transition-transform transform hover:scale-105" data-lang="heroButton">
                 Xem Showreel
             </a>
         </div>
@@ -117,21 +132,21 @@
     <!-- About Section -->
     <section id="about" class="py-20 md:py-32">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center animate-on-scroll">
                 <div class="lg:col-span-2">
                     <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-2xl">
                          <img src="https://i.postimg.cc/FK068DBB/394faacf-653c-4e60-81b3-8272daa958d6.jpg" alt="Chân dung của Nguyễn Thế Nguyên" class="object-cover w-full h-full">
                     </div>
                 </div>
                 <div class="lg:col-span-3">
-                    <h2 class="section-title text-3xl md:text-4xl font-bold mb-8">Về Tôi</h2>
-                    <p class="text-gray-400 mb-4 leading-relaxed">
+                    <h2 class="section-title text-3xl md:text-4xl font-bold mb-8" data-lang="aboutTitle">Về Tôi</h2>
+                    <p class="text-gray-400 mb-4 leading-relaxed" data-lang="aboutGreeting">
                         Xin chào, tôi là Nguyễn Thế Nguyên, một nhà quay phim với niềm đam mê mãnh liệt trong việc kiến tạo những câu chuyện đầy cảm xúc qua lăng kính điện ảnh. Hành trình của tôi bắt đầu từ mái trường Đại học Sân khấu - Điện ảnh TP.HCM, nơi đã cho tôi nền tảng vững chắc để biến ý tưởng thành hiện thực.
                     </p>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
+                    <p class="text-gray-400 mb-6 leading-relaxed" data-lang="aboutExperience">
                         Với kinh nghiệm làm việc trên nhiều dự án đa dạng từ phim ngắn, video ca nhạc (MV) đến quảng cáo thương mại (TVC), tôi luôn tìm cách kết hợp kỹ thuật ánh sáng, bố cục và chuyển động máy quay để tạo ra những thước phim không chỉ đẹp về mặt thẩm mỹ mà còn có chiều sâu và ý nghĩa.
                     </p>
-                    <a href="#contact" class="bg-transparent border-2 border-amber-500 text-amber-500 font-bold py-2 px-6 rounded-lg hover:bg-amber-500 hover:text-gray-900 transition-all duration-300">
+                    <a href="#contact" class="bg-transparent border-2 border-amber-500 text-amber-500 font-bold py-2 px-6 rounded-lg hover:bg-amber-500 hover:text-gray-900 transition-all duration-300" data-lang="aboutButton">
                         Cùng Hợp Tác
                     </a>
                 </div>
@@ -142,61 +157,60 @@
     <!-- Projects Section -->
     <section id="projects" class="py-20 md:py-32 bg-black">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl md:text-4xl font-bold">Các Dự Án Nổi Bật</h2>
-                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Nơi mỗi thước phim là một câu chuyện độc đáo được kể bằng ánh sáng và cảm xúc.</p>
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="section-title text-3xl md:text-4xl font-bold" data-lang="projectsTitle">Các Dự Án Nổi Bật</h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-lang="projectsSubtitle">Nơi mỗi thước phim là một câu chuyện độc đáo được kể bằng ánh sáng và cảm xúc.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
                 <!-- Project Card 1 -->
                 <a href="https://drive.google.com/drive/folders/1QwkSdB6tsf_8UZmsyDAKCaizK7mum2PC?usp=sharing" target="_blank" rel="noopener noreferrer" class="group block relative project-card rounded-lg overflow-hidden shadow-lg">
                     <img src="https://i.postimg.cc/qqMHjJtM/photo-2-17314005194711007118140-1731406457239-1731406457320634640679.png" alt="Dự án Mega Live phố đi bộ" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
-                        <h3 class="text-xl font-bold">Mega Live phố đi bộ</h3>
-                        <p class="text-sm text-amber-400">Live Stream</p>
+                        <h3 class="text-xl font-bold" data-lang="project1Title">Mega Live phố đi bộ</h3>
+                        <p class="text-sm text-amber-400" data-lang="project1Category">Live Stream</p>
                     </div>
                 </a>
                 <!-- Project Card 2 -->
-                <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://placehold.co/800x600/374151/e5e5e5?text=Dự+án+2" alt="Dự án 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                <a href="https://drive.google.com/drive/folders/1p4PjtGLzxUXiv9tjVcK46-JBS4jR0ecr" target="_blank" rel="noopener noreferrer" class="group block relative project-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.postimg.cc/26Zvm0hy/IMG-9262.jpg" alt="Dự án Miss Grand Việt Nam" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
-                        <h3 class="text-xl font-bold">Nhịp Điệu Thành Phố</h3>
-                        <p class="text-sm text-amber-400">Video Âm Nhạc (MV)</p>
+                        <h3 class="text-xl font-bold" data-lang="project2Title">Miss Grand Việt Nam</h3>
+                        <p class="text-sm text-amber-400" data-lang="project2Category">Live Stream</p>
                     </div>
                 </a>
                 <!-- Project Card 3 -->
                 <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://placehold.co/800x600/4b5563/e5e5e5?text=Dự+án+3" alt="Dự án 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <img src="https://placehold.co/800x600/1f2937/e5e5e5?text=Dự+án+3" alt="Dự án 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
-                        <h3 class="text-xl font-bold">Khoảnh Khắc Vàng</h3>
-                        <p class="text-sm text-amber-400">Quảng Cáo (TVC)</p>
+                        <h3 class="text-xl font-bold" data-lang="project3Title">Khoảnh Khắc Vàng</h3>
+                        <p class="text-sm text-amber-400" data-lang="project3Category">Quảng Cáo (TVC)</p>
                     </div>
                 </a>
-                <!-- Add more project cards as needed -->
                 <!-- These will be hidden initially -->
                 <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg extra-project hidden">
                     <img src="https://placehold.co/800x600/52525b/e5e5e5?text=Dự+án+4" alt="Dự án 4" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
-                        <h3 class="text-xl font-bold">Chân Trời Mới</h3>
-                        <p class="text-sm text-amber-400">Phim Tài Liệu</p>
+                        <h3 class="text-xl font-bold" data-lang="project4Title">Chân Trời Mới</h3>
+                        <p class="text-sm text-amber-400" data-lang="project4Category">Phim Tài Liệu</p>
                     </div>
                 </a>
                 <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg extra-project hidden">
                     <img src="https://placehold.co/800x600/1e40af/e5e5e5?text=Dự+án+5" alt="Dự án 5" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
-                        <h3 class="text-xl font-bold">Giấc Mơ Xanh</h3>
-                        <p class="text-sm text-amber-400">Phim Ngắn</p>
+                        <h3 class="text-xl font-bold" data-lang="project5Title">Giấc Mơ Xanh</h3>
+                        <p class="text-sm text-amber-400" data-lang="project5Category">Phim Ngắn</p>
                     </div>
                 </a>
                 <a href="#" class="group block relative project-card rounded-lg overflow-hidden shadow-lg extra-project hidden">
                     <img src="https://placehold.co/800x600/b91c1c/e5e5e5?text=Dự+án+6" alt="Dự án 6" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white project-info">
-                        <h3 class="text-xl font-bold">Năng Lượng Bùng Nổ</h3>
-                        <p class="text-sm text-amber-400">Quảng Cáo (TVC)</p>
+                        <h3 class="text-xl font-bold" data-lang="project6Title">Năng Lượng Bùng Nổ</h3>
+                        <p class="text-sm text-amber-400" data-lang="project6Category">Quảng Cáo (TVC)</p>
                     </div>
                 </a>
             </div>
             <div class="text-center mt-12">
-                <button id="see-more-btn" class="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:bg-amber-400 transition-transform transform hover:scale-105">
+                <button id="see-more-btn" class="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:bg-amber-400 transition-transform transform hover:scale-105" data-lang="seeMoreBtn">
                     Xem Thêm
                 </button>
             </div>
@@ -205,18 +219,18 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 md:py-32">
-        <div class="container mx-auto px-6 text-center">
-             <h2 class="section-title text-3xl md:text-4xl font-bold">Liên Hệ</h2>
-             <p class="text-gray-400 mt-4 max-w-2xl mx-auto mb-10">
+        <div class="container mx-auto px-6 text-center animate-on-scroll">
+             <h2 class="section-title text-3xl md:text-4xl font-bold" data-lang="contactTitle">Liên Hệ</h2>
+             <p class="text-gray-400 mt-4 max-w-2xl mx-auto mb-10" data-lang="contactSubtitle">
                 Bạn có một ý tưởng, một dự án, hay chỉ đơn giản là muốn trò chuyện về điện ảnh? <br/>Đừng ngần ngại liên lạc với tôi.
              </p>
              <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
                 <div class="text-lg">
-                    <span class="font-bold text-amber-400">Email:</span>
+                    <span class="font-bold text-amber-400" data-lang="contactEmailLabel">Email:</span>
                     <a href="mailto:nguyenthenguyen496@gmail.com" id="email-link" class="ml-2 text-gray-300 hover:text-white">nguyenthenguyen496@gmail.com</a>
                 </div>
                  <div class="text-lg">
-                    <span class="font-bold text-amber-400">Số điện thoại:</span>
+                    <span class="font-bold text-amber-400" data-lang="contactPhoneLabel">Số điện thoại:</span>
                     <a href="tel:0944659662" class="ml-2 text-gray-300 hover:text-white">(+84) 944 659 662</a>
                 </div>
              </div>
@@ -237,20 +251,149 @@
     <!-- Footer -->
     <footer class="bg-black py-8">
         <div class="container mx-auto px-6 flex flex-col sm:flex-row justify-between items-center text-gray-500 text-sm">
-            <p>&copy; <span id="year"></span> Nguyễn Thế Nguyên. All Rights Reserved.</p>
-            <p class="mt-2 sm:mt-0">Design by The Nguyen</p>
+            <p>&copy; <span id="year"></span> <span data-lang="footerRights">Nguyễn Thế Nguyên. All Rights Reserved.</span></p>
+            <p class="mt-2 sm:mt-0" data-lang="footerDesign">Design by The Nguyen</p>
         </div>
     </footer>
 
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- ELEMENTS ---
             const navbar = document.getElementById('navbar');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const navLinks = document.querySelectorAll('#mobile-menu a, #navbar nav a');
             const seeMoreBtn = document.getElementById('see-more-btn');
             const extraProjects = document.querySelectorAll('.extra-project');
+            const langSwitcher = document.getElementById('lang-switcher');
+            const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
+            const emailLink = document.getElementById('email-link');
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            // --- TRANSLATION DATA ---
+            const translations = {
+                vi: {
+                    navHome: 'Trang chủ',
+                    navAbout: 'Giới thiệu',
+                    navProjects: 'Dự án',
+                    navContact: 'Liên hệ',
+                    heroTitle: 'Nguyễn Thế Nguyên',
+                    heroSubtitle: 'Nhà Quay Phim Điện Ảnh & Người Kể Chuyện Bằng Hình Ảnh',
+                    heroButton: 'Xem Showreel',
+                    aboutTitle: 'Về Tôi',
+                    aboutGreeting: "Xin chào, tôi là Nguyễn Thế Nguyên, một nhà quay phim với niềm đam mê mãnh liệt trong việc kiến tạo những câu chuyện đầy cảm xúc qua lăng kính điện ảnh. Hành trình của tôi bắt đầu từ mái trường Đại học Sân khấu - Điện ảnh TP.HCM, nơi đã cho tôi nền tảng vững chắc để biến ý tưởng thành hiện thực.",
+                    aboutExperience: "Với kinh nghiệm làm việc trên nhiều dự án đa dạng từ phim ngắn, video ca nhạc (MV) đến quảng cáo thương mại (TVC), tôi luôn tìm cách kết hợp kỹ thuật ánh sáng, bố cục và chuyển động máy quay để tạo ra những thước phim không chỉ đẹp về mặt thẩm mỹ mà còn có chiều sâu và ý nghĩa.",
+                    aboutButton: 'Cùng Hợp Tác',
+                    projectsTitle: 'Các Dự Án Nổi Bật',
+                    projectsSubtitle: 'Nơi mỗi thước phim là một câu chuyện độc đáo được kể bằng ánh sáng và cảm xúc.',
+                    project1Title: 'Mega Live phố đi bộ',
+                    project1Category: 'Live Stream',
+                    project2Title: 'Miss Grand Việt Nam',
+                    project2Category: 'Live Stream',
+                    project3Title: 'Khoảnh Khắc Vàng',
+                    project3Category: 'Quảng Cáo (TVC)',
+                    project4Title: 'Chân Trời Mới',
+                    project4Category: 'Phim Tài Liệu',
+                    project5Title: 'Giấc Mơ Xanh',
+                    project5Category: 'Phim Ngắn',
+                    project6Title: 'Năng Lượng Bùng Nổ',
+                    project6Category: 'Quảng Cáo (TVC)',
+                    seeMoreBtn: 'Xem Thêm',
+                    seeLessBtn: 'Thu Gọn',
+                    contactTitle: 'Liên Hệ',
+                    contactSubtitle: 'Bạn có một ý tưởng, một dự án, hay chỉ đơn giản là muốn trò chuyện về điện ảnh? <br/>Đừng ngần ngại liên lạc với tôi.',
+                    contactEmailLabel: 'Email:',
+                    contactPhoneLabel: 'Số điện thoại:',
+                    footerRights: 'Nguyễn Thế Nguyên. All Rights Reserved.',
+                    footerDesign: 'Design by The Nguyen',
+                    langSwitchToEN: 'Chuyển sang Tiếng Anh',
+                    langSwitchToVI: 'Switch to Vietnamese',
+                },
+                en: {
+                    navHome: 'Home',
+                    navAbout: 'About',
+                    navProjects: 'Projects',
+                    navContact: 'Contact',
+                    heroTitle: 'Nguyen The Nguyen',
+                    heroSubtitle: 'Cinematographer & Visual Storyteller',
+                    heroButton: 'View Showreel',
+                    aboutTitle: 'About Me',
+                    aboutGreeting: "Hello, I'm Nguyen The Nguyen, a cinematographer with a passionate drive to create emotional stories through the cinematic lens. My journey began at the Ho Chi Minh City University of Theatre and Cinema, which gave me a solid foundation to turn ideas into reality.",
+                    aboutExperience: "With experience working on diverse projects from short films, music videos (MVs) to commercials (TVCs), I always seek to combine lighting techniques, composition, and camera movement to create footage that is not only aesthetically beautiful but also has depth and meaning.",
+                    aboutButton: "Let's Collaborate",
+                    projectsTitle: 'Featured Projects',
+                    projectsSubtitle: 'Where every shot is a unique story told with light and emotion.',
+                    project1Title: 'Mega Live Walking Street',
+                    project1Category: 'Live Stream',
+                    project2Title: 'Miss Grand Vietnam',
+                    project2Category: 'Live Stream',
+                    project3Title: 'The Golden Moment',
+                    project3Category: 'Commercial (TVC)',
+                    project4Title: 'New Horizons',
+                    project4Category: 'Documentary',
+                    project5Title: 'The Green Dream',
+                    project5Category: 'Short Film',
+                    project6Title: 'Explosive Energy',
+                    project6Category: 'Commercial (TVC)',
+                    seeMoreBtn: 'See More',
+                    seeLessBtn: 'Show Less',
+                    contactTitle: 'Contact',
+                    contactSubtitle: 'Have an idea, a project, or just want to talk about cinema? <br/>Don\'t hesitate to get in touch.',
+                    contactEmailLabel: 'Email:',
+                    contactPhoneLabel: 'Phone:',
+                    footerRights: 'Nguyen The Nguyen. All Rights Reserved.',
+                    footerDesign: 'Design by The Nguyen',
+                    langSwitchToEN: 'Switch to English',
+                    langSwitchToVI: 'Chuyển sang Tiếng Việt',
+                }
+            };
+            
+            // --- FUNCTIONS ---
+            
+            // Function to set the language
+            const setLanguage = (lang) => {
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+
+                // Update all elements with data-lang attribute
+                document.querySelectorAll('[data-lang]').forEach(el => {
+                    const key = el.getAttribute('data-lang');
+                    if (translations[lang][key]) {
+                        // Handle mobile nav links separately to keep the same key
+                        const mobileKey = key.replace(/Mobile$/, '');
+                        if(translations[lang][mobileKey]){
+                             el.innerHTML = translations[lang][mobileKey];
+                        } else {
+                             el.innerHTML = translations[lang][key];
+                        }
+                    }
+                });
+                
+                // Update "Xem Thêm" button text based on its state
+                if (seeMoreBtn) {
+                     const isExpanded = seeMoreBtn.textContent === translations.vi.seeLessBtn || seeMoreBtn.textContent === translations.en.seeLessBtn;
+                     seeMoreBtn.textContent = isExpanded ? translations[lang].seeLessBtn : translations[lang].seeMoreBtn;
+                }
+
+                // Update language switcher buttons text
+                if (lang === 'vi') {
+                    langSwitcher.textContent = 'EN';
+                    langSwitcherMobile.textContent = translations.vi.langSwitchToEN;
+                } else {
+                    langSwitcher.textContent = 'VI';
+                    langSwitcherMobile.textContent = translations.en.langSwitchToVI;
+                }
+            };
+
+            // Function to toggle language
+            const toggleLanguage = () => {
+                const currentLang = localStorage.getItem('language') || 'vi';
+                const newLang = currentLang === 'vi' ? 'en' : 'vi';
+                setLanguage(newLang);
+            };
+
+            // --- INITIALIZATION ---
 
             // Set current year in footer
             document.getElementById('year').textContent = new Date().getFullYear();
@@ -269,7 +412,7 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Close mobile menu when a link is clicked
+            // Close mobile menu when a nav link is clicked
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     if (!mobileMenu.classList.contains('hidden')) {
@@ -284,36 +427,50 @@
                     extraProjects.forEach(project => {
                         project.classList.toggle('hidden');
                     });
-
-                    if (seeMoreBtn.textContent.trim() === 'Xem Thêm') {
-                        seeMoreBtn.textContent = 'Thu Gọn';
-                    } else {
-                        seeMoreBtn.textContent = 'Xem Thêm';
-                    }
+                    
+                    const currentLang = localStorage.getItem('language') || 'vi';
+                    const isExpanded = !extraProjects[0].classList.contains('hidden');
+                    seeMoreBtn.textContent = isExpanded ? translations[currentLang].seeLessBtn : translations[currentLang].seeMoreBtn;
                 });
             }
 
             // Dynamic email link based on device
-            const emailLink = document.getElementById('email-link');
             if (emailLink) {
                 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
                 const emailAddress = 'nguyenthenguyen496@gmail.com';
 
                 if (!isMobile) {
-                    // On desktop, link to Gmail's web composer in a new tab
                     emailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`;
                     emailLink.target = '_blank';
                     emailLink.rel = 'noopener noreferrer';
                 }
-                // On mobile, the default `mailto:` link is kept, which is the best practice.
             }
+            
+            // Language switcher event listeners
+            langSwitcher.addEventListener('click', toggleLanguage);
+            langSwitcherMobile.addEventListener('click', () => {
+                toggleLanguage();
+                mobileMenu.classList.add('hidden'); // Close menu after switching
+            });
+            
+            // Scroll Animation Logic
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach(el => observer.observe(el));
+
+            // Set initial language from localStorage or default to 'vi'
+            const initialLang = localStorage.getItem('language') || 'vi';
+            setLanguage(initialLang);
         });
     </script>
 
 </body>
 </html>
-
-
-
-
 
