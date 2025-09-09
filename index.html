@@ -83,6 +83,30 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Gemini AI Modal Styles */
+        .modal-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-container {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .gemini-loader {
+            border-top-color: #f59e0b;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .gemini-result h3 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #f59e0b;
+            margin-top: 1rem;
+        }
+        .gemini-result p {
+            margin-top: 0.25rem;
+        }
     </style>
 </head>
 
@@ -237,10 +261,15 @@
                     <a href="tel:0944659662" class="ml-2 text-gray-300 hover:text-white">(+84) 944 659 662</a>
                 </div>
              </div>
-             <div class="flex justify-center space-x-6 mt-12">
+             <div class="mt-12">
+                <button id="open-gemini-modal-btn" class="bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg uppercase tracking-wider hover:opacity-90 transition-opacity transform hover:scale-105" data-lang="geminiBtn">
+                    ✨ Lên Ý Tưởng Cùng AI
+                </button>
+             </div>
+             <div class="flex justify-center space-x-6 mt-8">
                 <!-- Social Icons -->
                 <a href="https://www.instagram.com/thnguyen496_/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-amber-400 transition-transform transform hover:scale-110">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 4.155 0 2.748-.012 3.088-.06 4.155-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-4.155.06-2.748 0-3.088-.012-4.155-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 15.315 2 14.974 2 12.227c0-2.748.012-3.088.06-4.155.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.93 2.013 9.27 2 12 2h.315zM12 4.545c-2.417 0-4.364 1.947-4.364 4.364 0 2.417 1.947 4.364 4.364 4.364 2.417 0 4.364-1.947 4.364-4.364 0-2.417-1.947-4.364-4.364-4.364zm0 7.09c-1.541 0-2.791-1.25-2.791-2.791s1.25-2.791 2.791-2.791 2.791 1.25 2.791 2.791-1.25 2.791-2.791 2.791zm5.25-6.405c-.78 0-1.414.634-1.414 1.414s.634 1.414 1.414 1.414 1.414-.634 1.414-1.414-.634-1.414-1.414-1.414z" clip-rule="evenodd" /></svg>
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.316 1.363.364 2.427.048 1.067.06 1.407.06 4.155 0 2.748-.012 3.088-.06 4.155-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.316-2.427.364-1.067.048-1.407.06-4.155.06-2.748 0-3.088-.012-4.155-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.316-1.363-.364-2.427C2.013 15.315 2 14.974 2 12.227c0-2.748.012-3.088.06-4.155.049-1.064.218 1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.316 2.427-.364C8.93 2.013 9.27 2 12 2h.315zM12 4.545c-2.417 0-4.364 1.947-4.364 4.364 0 2.417 1.947 4.364 4.364 4.364 2.417 0 4.364-1.947 4.364-4.364 0-2.417-1.947-4.364-4.364-4.364zm0 7.09c-1.541 0-2.791-1.25-2.791-2.791s1.25-2.791 2.791-2.791 2.791 1.25 2.791 2.791-1.25 2.791-2.791 2.791zm5.25-6.405c-.78 0-1.414.634-1.414 1.414s.634 1.414 1.414 1.414 1.414-.634 1.414-1.414-.634-1.414-1.414-1.414z" clip-rule="evenodd" /></svg>
                     <span class="sr-only">Instagram</span>
                 </a>
                 <a href="https://www.facebook.com/the.nguyen.187896" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-amber-400 transition-transform transform hover:scale-110">
@@ -259,6 +288,23 @@
         </div>
     </footer>
 
+    <!-- Gemini AI Modal -->
+    <div id="gemini-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay bg-black bg-opacity-70 hidden opacity-0">
+        <div class="modal-container bg-gray-900 w-full max-w-2xl rounded-lg shadow-lg p-6 relative opacity-0 -translate-y-10">
+            <button id="close-gemini-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-white">&times;</button>
+            <h2 class="text-2xl font-bold text-amber-400 mb-4" data-lang="geminiModalTitle">Trợ Lý Sáng Tạo AI</h2>
+            <p class="text-gray-400 mb-4" data-lang="geminiModalSubtitle">Hãy đưa ra một ý tưởng, và AI sẽ giúp bạn phác thảo những concept hình ảnh độc đáo.</p>
+            
+            <textarea id="idea-input" class="w-full h-24 p-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500" data-lang-placeholder="geminiModalPlaceholder" placeholder="Nhập ý tưởng... (ví dụ: một MV lãng mạn quay ở Đà Lạt, một TVC năng động cho nước tăng lực...)"></textarea>
+            
+            <button id="generate-ideas-btn" class="mt-4 w-full bg-amber-500 text-gray-900 font-bold py-2 px-4 rounded-md hover:bg-amber-400 transition-colors" data-lang="geminiGenerateBtn">Tạo Ý Tưởng</button>
+            
+            <div id="gemini-loader" class="hidden my-4 mx-auto w-8 h-8 rounded-full border-4 border-gray-700 gemini-loader"></div>
+            
+            <div id="gemini-result" class="mt-6 text-gray-300 max-h-64 overflow-y-auto pr-2 gemini-result"></div>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -273,6 +319,14 @@
             const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
             const emailLink = document.getElementById('email-link');
             const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            // Gemini Modal Elements
+            const geminiModal = document.getElementById('gemini-modal');
+            const openGeminiModalBtn = document.getElementById('open-gemini-modal-btn');
+            const closeGeminiModalBtn = document.getElementById('close-gemini-modal-btn');
+            const generateIdeasBtn = document.getElementById('generate-ideas-btn');
+            const ideaInput = document.getElementById('idea-input');
+            const geminiLoader = document.getElementById('gemini-loader');
+            const geminiResult = document.getElementById('gemini-result');
             
             // --- TRANSLATION DATA ---
             const translations = {
@@ -310,8 +364,14 @@
                     contactPhoneLabel: 'Số điện thoại:',
                     footerRights: 'Nguyễn Thế Nguyên. All Rights Reserved.',
                     footerDesign: 'Design by The Nguyen',
-                    langSwitchToEN: 'Chuyển sang Tiếng Anh',
-                    langSwitchToVI: 'Switch to Vietnamese',
+                    langSwitcherButtonText: 'Switch to English',
+                    geminiBtn: '✨ Lên Ý Tưởng Cùng AI',
+                    geminiModalTitle: 'Trợ Lý Sáng Tạo AI của Thế Nguyên',
+                    geminiModalSubtitle: 'Hãy đưa ra một ý tưởng, và AI sẽ giúp bạn phác thảo những concept hình ảnh độc đáo.',
+                    geminiModalPlaceholder: 'Nhập ý tưởng... (ví dụ: một MV lãng mạn quay ở Đà Lạt, một TVC năng động cho nước tăng lực...)',
+                    geminiGenerateBtn: 'Tạo Ý Tưởng',
+                    geminiLoading: 'AI đang suy nghĩ...',
+                    geminiError: 'Đã có lỗi xảy ra. Vui lòng thử lại.'
                 },
                 en: {
                     navHome: 'Home',
@@ -347,116 +407,178 @@
                     contactPhoneLabel: 'Phone:',
                     footerRights: 'Nguyen The Nguyen. All Rights Reserved.',
                     footerDesign: 'Design by The Nguyen',
-                    langSwitchToEN: 'Switch to English',
-                    langSwitchToVI: 'Chuyển sang Tiếng Việt',
+                    langSwitcherButtonText: 'Chuyển sang Tiếng Việt',
+                    geminiBtn: '✨ Brainstorm with AI',
+                    geminiModalTitle: "The Nguyen's AI Creative Assistant",
+                    geminiModalSubtitle: 'Provide an idea, and the AI will help you sketch out unique visual concepts.',
+                    geminiModalPlaceholder: 'Enter your idea... (e.g., a romantic MV shot in Da Lat, a dynamic TVC for an energy drink...)',
+                    geminiGenerateBtn: 'Generate Ideas',
+                    geminiLoading: 'AI is thinking...',
+                    geminiError: 'An error occurred. Please try again.'
                 }
             };
             
             // --- FUNCTIONS ---
             
+            const getCurrentLang = () => localStorage.getItem('language') || 'vi';
+
             // Function to set the language
             const setLanguage = (lang) => {
                 document.documentElement.lang = lang;
                 localStorage.setItem('language', lang);
 
-                // Update all elements with data-lang attribute
                 document.querySelectorAll('[data-lang]').forEach(el => {
                     const key = el.getAttribute('data-lang');
                     if (translations[lang][key]) {
-                        // Handle mobile nav links separately to keep the same key
                         const mobileKey = key.replace(/Mobile$/, '');
-                        if(translations[lang][mobileKey]){
-                             el.innerHTML = translations[lang][mobileKey];
-                        } else {
-                             el.innerHTML = translations[lang][key];
-                        }
+                        el.innerHTML = translations[lang][mobileKey] || translations[lang][key];
+                    }
+                });
+
+                document.querySelectorAll('[data-lang-placeholder]').forEach(el => {
+                    const key = el.getAttribute('data-lang-placeholder');
+                    if (translations[lang][key]) {
+                        el.placeholder = translations[lang][key];
                     }
                 });
                 
-                // Update "Xem Thêm" button text based on its state
                 if (seeMoreBtn) {
                      const isExpanded = seeMoreBtn.textContent === translations.vi.seeLessBtn || seeMoreBtn.textContent === translations.en.seeLessBtn;
                      seeMoreBtn.textContent = isExpanded ? translations[lang].seeLessBtn : translations[lang].seeMoreBtn;
                 }
 
-                // Update language switcher buttons text
-                if (lang === 'vi') {
-                    langSwitcher.textContent = 'EN';
-                    langSwitcherMobile.textContent = translations.vi.langSwitchToEN;
-                } else {
-                    langSwitcher.textContent = 'VI';
-                    langSwitcherMobile.textContent = translations.en.langSwitchToVI;
+                langSwitcherMobile.textContent = translations[lang].langSwitcherButtonText;
+                langSwitcher.textContent = (lang === 'vi') ? 'EN' : 'VI';
+            };
+
+            const toggleLanguage = () => {
+                const newLang = getCurrentLang() === 'vi' ? 'en' : 'vi';
+                setLanguage(newLang);
+            };
+            
+            const openModal = () => {
+                geminiModal.classList.remove('hidden');
+                setTimeout(() => {
+                    geminiModal.classList.remove('opacity-0');
+                    geminiModal.querySelector('.modal-container').classList.remove('opacity-0', '-translate-y-10');
+                }, 10);
+            };
+
+            const closeModal = () => {
+                geminiModal.querySelector('.modal-container').classList.add('opacity-0', '-translate-y-10');
+                geminiModal.classList.add('opacity-0');
+                setTimeout(() => {
+                    geminiModal.classList.add('hidden');
+                }, 300);
+            };
+
+            const callGeminiApi = async (prompt) => {
+                geminiLoader.classList.remove('hidden');
+                geminiResult.innerHTML = '';
+                generateIdeasBtn.disabled = true;
+
+                const apiKey = ""; // API key will be provided by the runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const systemPrompt = "You are a creative assistant for a professional cinematographer. A potential client has a project idea. Based on their idea, generate 2-3 distinct creative concepts. For each concept, suggest a visual style, potential shot ideas, and a color palette. Format the response using markdown with headings for each concept. Keep the response concise, inspiring, and easy to read. Respond in the same language as the user's prompt.";
+                
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: prompt }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] },
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API call failed with status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                    
+                    if (text) {
+                        // Simple markdown to HTML conversion
+                        let html = text
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                            .replace(/\n\s*-\s/g, '<br>- ') // List items
+                            .replace(/\n/g, '<br>'); 
+                        
+                        // Add custom styling for headings
+                        html = html.replace(/<br>Concept\s*\d*:/gi, '<h3>Concept $1:</h3>')
+                                   .replace(/<br>Visual Style:/gi, '<p><strong>Visual Style:</strong></p>')
+                                   .replace(/<br>Shot Ideas:/gi, '<p><strong>Shot Ideas:</strong></p>')
+                                   .replace(/<br>Color Palette:/gi, '<p><strong>Color Palette:</strong></p>');
+
+                        geminiResult.innerHTML = html;
+                    } else {
+                        throw new Error("No content received from API.");
+                    }
+                } catch (error) {
+                    console.error("Gemini API Error:", error);
+                    geminiResult.textContent = translations[getCurrentLang()].geminiError;
+                } finally {
+                    geminiLoader.classList.add('hidden');
+                    generateIdeasBtn.disabled = false;
                 }
             };
 
-            // Function to toggle language
-            const toggleLanguage = () => {
-                const currentLang = localStorage.getItem('language') || 'vi';
-                const newLang = currentLang === 'vi' ? 'en' : 'vi';
-                setLanguage(newLang);
-            };
 
             // --- INITIALIZATION ---
 
-            // Set current year in footer
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // Sticky navbar on scroll
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('nav-scrolled');
-                } else {
-                    navbar.classList.remove('nav-scrolled');
-                }
+                navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
             });
 
-            // Toggle mobile menu
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Close mobile menu when a nav link is clicked
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    if (!mobileMenu.classList.contains('hidden')) {
-                         mobileMenu.classList.add('hidden');
-                    }
+                    mobileMenu.classList.add('hidden');
                 });
             });
 
-            // Handle "See More" button for projects
-            if (seeMoreBtn && extraProjects.length > 0) {
+            if (seeMoreBtn) {
                 seeMoreBtn.addEventListener('click', () => {
-                    extraProjects.forEach(project => {
-                        project.classList.toggle('hidden');
-                    });
-                    
-                    const currentLang = localStorage.getItem('language') || 'vi';
+                    extraProjects.forEach(p => p.classList.toggle('hidden'));
                     const isExpanded = !extraProjects[0].classList.contains('hidden');
-                    seeMoreBtn.textContent = isExpanded ? translations[currentLang].seeLessBtn : translations[currentLang].seeMoreBtn;
+                    seeMoreBtn.textContent = isExpanded ? translations[getCurrentLang()].seeLessBtn : translations[getCurrentLang()].seeMoreBtn;
                 });
             }
 
-            // Dynamic email link based on device
             if (emailLink) {
-                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                const emailAddress = 'nguyenthenguyen496@gmail.com';
-
+                const isMobile = /Mobi/i.test(navigator.userAgent);
+                const email = 'nguyenthenguyen496@gmail.com';
                 if (!isMobile) {
-                    emailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`;
+                    emailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`;
                     emailLink.target = '_blank';
-                    emailLink.rel = 'noopener noreferrer';
                 }
             }
             
-            // Language switcher event listeners
             langSwitcher.addEventListener('click', toggleLanguage);
             langSwitcherMobile.addEventListener('click', () => {
                 toggleLanguage();
-                mobileMenu.classList.add('hidden'); // Close menu after switching
+                mobileMenu.classList.add('hidden');
+            });
+
+            // Gemini Modal Listeners
+            openGeminiModalBtn.addEventListener('click', openModal);
+            closeGeminiModalBtn.addEventListener('click', closeModal);
+            geminiModal.addEventListener('click', (e) => {
+                if (e.target === geminiModal) closeModal();
+            });
+            generateIdeasBtn.addEventListener('click', () => {
+                if (ideaInput.value.trim()) {
+                    callGeminiApi(ideaInput.value.trim());
+                }
             });
             
-            // Scroll Animation Logic
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -465,15 +587,13 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             animatedElements.forEach(el => observer.observe(el));
 
-            // Set initial language from localStorage or default to 'vi'
-            const initialLang = localStorage.getItem('language') || 'vi';
-            setLanguage(initialLang);
+            setLanguage(getCurrentLang());
         });
     </script>
 
 </body>
 </html>
+
 
