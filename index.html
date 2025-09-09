@@ -477,7 +477,7 @@
                 geminiResult.innerHTML = '';
                 generateIdeasBtn.disabled = true;
 
-                const apiKey = ""; // API key will be provided by the runtime
+                const apiKey = "AIzaSyAM_SxLbZziHwIy6k_yb73GQrolh8CAn2w"; // QUAN TRỌNG: DÁN API KEY CỦA BẠN TỪ GOOGLE AI STUDIO VÀO ĐÂY
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
                 const systemPrompt = "You are a creative assistant for a professional cinematographer. A potential client has a project idea. Based on their idea, generate 2-3 distinct creative concepts. For each concept, suggest a visual style, potential shot ideas, and a color palette. Format the response using markdown with headings for each concept. Keep the response concise, inspiring, and easy to read. Respond in the same language as the user's prompt.";
@@ -595,5 +595,7 @@
 
 </body>
 </html>
+
+
 
 
